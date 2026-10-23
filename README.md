@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vikela
 
-## Getting Started
+Abuse detection for South African banks. Built for the FNB App of the Year Hackathon 2026, "Safer communities and gender-based violence response".
 
-First, run the development server:
+Abusers use payment references to reach people who have blocked them everywhere else: a R1 payment with "I know where you are" in the reference gets delivered today. Vikela:
+
+- **Screens payment references** in English, isiZulu, Sesotho, Afrikaans and code-switched text, and holds abusive ones before they reach the recipient. The sender only sees "processing".
+- **Spots economic-abuse patterns** with no words involved, such as a salary swept to one person within the hour every month, or tiny payments used as a messaging channel.
+- **Hands every case to a person** at the bank, with a risk score that explains itself, the full history between the two people, and a way to reach the customer through the in-app Secure Inbox only (no SMS, no push).
+
+All people, accounts and transactions are synthetic.
+
+## Run locally
+
+Needs Node 24 and Postgres.
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in DATABASE_URL
+npm run db:reset             # creates tables and seeds the demo data
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without `ANTHROPIC_API_KEY` the classifier runs on the built-in rules only. With a key, a Claude model classifies each reference and the rules act as a floor and a fallback.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it fits together
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Part | Where |
+|---|---|
+| Demo guide (judge mode) | `src/app/page.tsx` |
+| Mock banking app | `src/app/bank` |
+| Analyst console | `src/app/console` |
+| Reference classifier (model + rules) | `src/lib/classify.ts`, `src/lib/rules.ts` |
+| Cases, risk score, pattern detectors | `src/lib/cases.ts` |
+| Schema and seed | `db/schema.sql`, `scripts/seed.ts` |
 
-## Learn More
+## Security notes (work in progress)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Payment references are attacker-controlled text. They go to the model wrapped as data, with structured output only and no tools, so an injected instruction can't change what the system does.
+- Long digit runs (account, card and phone numbers) are redacted before any text leaves the system.
+- The sender is never told a payment was held, so the system can't tip off an abuser.
+- A person makes every decision. Nothing contacts customers, freezes accounts or reports anyone automatically.
+- **Not done yet:** real sign-in for the console and the bank app (the demo uses persona switching), row-level security, and an access audit log.
