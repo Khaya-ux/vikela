@@ -39,10 +39,62 @@ export default function Home() {
         Also in the console: a salary that leaves for one person within minutes every month (no abusive words at all),
         and a joke between friends that was correctly let through.
       </p>
-      <p className="mt-2 text-xs text-muted">All people, accounts and transactions in this demo are invented.</p>
+
+      <section className="mt-12">
+        <h2 className="text-lg font-semibold">How Vikela meets the judging criteria</h2>
+        <dl className="mt-4 divide-y divide-line rounded-xl border border-line bg-card">
+          {CRITERIA.map((c) => (
+            <div key={c.name} className="grid gap-1 p-5 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
+              <dt className="text-sm font-semibold text-brand">{c.name}</dt>
+              <dd className="text-sm text-muted">
+                {c.body}
+                {c.look && <span className="mt-1.5 block text-foreground">See it: {c.look}</span>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <p className="mt-10 text-xs text-muted">All people, accounts and transactions in this demo are invented.</p>
     </main>
   );
 }
+
+// One short answer per judging criterion. Facts and numbers match docs/lean-canvas.txt.
+const CRITERIA: { name: string; body: string; look?: string }[] = [
+  {
+    name: "Product",
+    body: "Works end to end, live: screen, hold, review, reach out. The need is proven: Australia’s Commonwealth Bank has blocked nearly 1 million abusive payment messages since 2020. No South African bank we found does this yet.",
+    look: "steps 1 to 3 above.",
+  },
+  {
+    name: "Creativity",
+    body: "Protection that asks nothing of the victim: no app to install, no report to file. Abusive payments are held, not bounced, so the sender only sees “processing” and is never tipped off.",
+    look: "what Jabu sees after sending, and what Lerato doesn’t.",
+  },
+  {
+    name: "Usability",
+    body: "Three steps for judges, one queue sorted by risk for bank staff, and nothing new for customers until someone reaches out safely in their Secure Inbox.",
+    look: "the bank console.",
+  },
+  {
+    name: "Sustainability",
+    body: "Banks pay, customers never do. R300 000 for a 3-month pilot, then R0.10 per customer per month. One large bank, about 3 million customers, covers the running costs. Every bank that joins grows a South African-language abuse dataset no one else has.",
+  },
+  {
+    name: "Impact",
+    body: "24% of South African women, about 3.4 million, have experienced violence from an intimate partner, and 1 in 8 has experienced financial abuse (HSRC, 2024). Once a bank switches Vikela on, every one of its customers is covered.",
+  },
+  {
+    name: "Presentation",
+    body: "One story, seen from all three sides. Lerato blocked Jabu everywhere, so he used her bank account. You play him, her, and the bank.",
+  },
+  {
+    name: "Intelligence",
+    body: "Reads patterns, not just words. It reads threats in isiZulu, Sesotho, Afrikaans and mixed-language messages, notices when they are escalating so the case climbs the queue before the next one, and flags a salary that leaves for the same person within the hour every month, with no words at all. Every score explains itself.",
+    look: "the Kagiso and Zanele case (escalating) and the Vusi and Nomsa case (salary sweep) in the console.",
+  },
+];
 
 function Step({ n, title, body, children }: { n: number; title: string; body: string; children: React.ReactNode }) {
   return (
