@@ -1,0 +1,70 @@
+=== PROBLEM STATEMENT (BACKED BY EVIDENCE) ===
+
+24% of South African women, about 3.4 million, have experienced violence from an intimate partner, and 1 in 8 has experienced financial abuse (HSRC national GBV study, 2024). When a woman blocks her abuser everywhere, one channel stays open: her bank account. Anyone can send her R1 with "I know where you are" in the reference, and the bank delivers it.
+
+This is proven: Australia's Commonwealth Bank has blocked nearly 1 million abusive payment messages since 2020. In South Africa, no bank we found screens for it, and staff can't read threats written in isiZulu, Sesotho or slang. Money control, like a salary taken by a partner minutes after it lands, goes unseen too.
+
+
+=== SOLUTION & FEATURES ===
+
+Vikela is an abuse-detection module that banks plug into their payment system.
+
+- Reads payment references in English, isiZulu, Sesotho and Afrikaans, and holds abusive ones before they're delivered.
+- The sender only sees "processing", so the abuser is never tipped off.
+- Spots economic abuse with no words at all, like a salary swept to one person every month.
+- Gives bank staff a live case queue with translations and a risk score that explains itself.
+- Lets staff reach the customer safely, inside the banking app only.
+
+
+=== UNIQUE VALUE PROPOSITION ===
+
+Vikela closes the one channel an abuser can't be blocked from, in South African languages, without putting the victim at more risk. Australia proved the idea in English. We built it for South Africa.
+
+
+=== UNFAIR ADVANTAGE ===
+
+It protects people without asking anything of them. No app to download and no report to file: once a bank switches it on, every customer is covered. Every bank that joins improves our South African-language abuse dataset, which no one else has.
+
+
+=== CUSTOMER SEGMENTS ===
+
+Who pays: South African banks and payment providers, from the big five (Capitec, Absa, Standard Bank, FNB and Nedbank, together about 69 million clients) to digital banks and e-wallets.
+
+Who we protect: women aged 18 and over in or leaving abusive relationships, especially those who depend on a partner financially.
+
+
+=== KEY METRICS ===
+
+Traction so far: a working prototype, built and tested this weekend, that holds abusive payments in isiZulu and English end to end. Native-speaker test phrases are being collected now.
+
+Targets:
+- 1 bank in a paid pilot within 6 months.
+- At least 90% of abusive references caught, with fewer than 1 in 10 000 ordinary payments flagged by mistake.
+- Every held payment reviewed within 24 hours.
+- 2 banks live, covering 10 million customers, within 12 months.
+
+
+=== DISTRIBUTION CHANNELS ===
+
+Through the banks themselves. Vikela sits inside a bank's existing app, so customers get it without doing anything. We reach banks through direct pilots with their fraud and customer-care teams, starting with FNB App of the Year, and through partners like the Banking Association South Africa and GBV organisations.
+
+
+=== COST STRUCTURE ===
+
+About R300 000 a month to run one bank pilot:
+- Team of 4, hired for the pilot: R200 000
+- Native-speaker language data: R30 000
+- AI model, used only on flagged payments (about R0.16 each): R46 000
+- Hosting, legal and compliance: R25 000
+
+Once-off: R230 000 for a security test and a POPIA privacy assessment.
+
+
+=== REVENUE STREAMS ===
+
+Banks pay. Customers never do.
+- Paid pilot: R300 000 for 3 months.
+- Licence: R0.10 per customer per month. A bank with 10 million customers pays R1 million a month.
+- Setup: R500 000 per bank.
+
+We break even at about 3 million customers, which is one large bank.
