@@ -1,3 +1,4 @@
+import "server-only";
 import postgres from "postgres";
 
 // One pool per server process. Next dev hot-reloads modules, so keep it on globalThis.
