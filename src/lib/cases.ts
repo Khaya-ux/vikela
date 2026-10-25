@@ -41,6 +41,11 @@ export const PATTERN_LABELS: Record<string, string> = {
   "pattern:salary_sweep": "salary swept to one person within the hour",
   "pattern:payment_messaging": "tiny payments used as a messaging channel",
 };
+// Short forms for chips in the case queue.
+export const PATTERN_SHORT: Record<string, string> = {
+  "pattern:salary_sweep": "Salary sweep",
+  "pattern:payment_messaging": "Payments as messages",
+};
 
 // Explainable score: every point comes from something an analyst can see on the timeline.
 export async function recomputeRisk(sql: Sql, caseId: number) {
