@@ -11,6 +11,13 @@
   --danger: #b42318;
   --warn: #b54708;
   --ok: #067647;
+  /* Ubuntu Bank, the fictional bank Vikela plugs into. Its own colours so it never reads as Vikela. */
+  --bank: #43206b;
+  --bank-ink: #ffffff;
+  --bank-soft: #f3eef8;
+  --bank-accent: #f0a63a;
+  --bank-card-from: #3a1a5e;
+  --bank-card-to: #74409c;
 }
 
 @theme inline {
@@ -24,6 +31,12 @@
   --color-danger: var(--danger);
   --color-warn: var(--warn);
   --color-ok: var(--ok);
+  --color-bank: var(--bank);
+  --color-bank-ink: var(--bank-ink);
+  --color-bank-soft: var(--bank-soft);
+  --color-bank-accent: var(--bank-accent);
+  --color-bank-card-from: var(--bank-card-from);
+  --color-bank-card-to: var(--bank-card-to);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -40,6 +53,10 @@
     --danger: #f97066;
     --warn: #fdb022;
     --ok: #47cd89;
+    --bank: #b89be3;
+    --bank-ink: #1d1030;
+    --bank-soft: #2a2236;
+    --bank-accent: #f5b955;
   }
 }
 

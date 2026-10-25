@@ -1,6 +1,7 @@
 import { sql } from "@/lib/db";
 import { currentPersona } from "@/lib/persona";
 import { when } from "@/lib/format";
+import { BankLogo, LockIcon } from "../ui";
 
 // Secure Inbox: only visible after signing in to the app. Nothing here is ever pushed or sent by SMS,
 // so someone glancing at the lock screen sees nothing.
@@ -11,16 +12,28 @@ export default async function InboxPage() {
   await sql`update outreach_messages set read_at = now() where customer_id = ${me} and read_at is null`;
 
   return (
-    <div>
+    <div className="space-y-5">
       <h1 className="text-xl font-semibold tracking-tight">Secure Inbox</h1>
+      <p className="flex gap-2 rounded-2xl bg-bank-soft p-3 text-xs">
+        <LockIcon className="size-4 shrink-0 text-bank" />
+        Only Ubuntu Bank can send messages here. We never send them by SMS or notification.
+      </p>
+
       {messages.length === 0 ? (
-        <p className="mt-6 text-sm text-muted">No messages.</p>
+        <div className="flex flex-col items-center py-12 text-center text-sm text-muted">
+          <LockIcon className="size-8" />
+          <p className="mt-3">No messages yet.</p>
+        </div>
       ) : (
-        <ul className="mt-4 space-y-3">
+        <ul className="space-y-3">
           {messages.map((m) => (
-            <li key={m.id} className="rounded-xl border border-line p-4">
-              <p className="text-xs text-muted">Ubuntu Bank Care · {when(m.created_at)}</p>
-              <p className="mt-2 whitespace-pre-line text-sm">{m.body}</p>
+            <li key={m.id} className="rounded-2xl border border-line p-4">
+              <div className="flex items-center gap-2">
+                <BankLogo className="size-7" />
+                <span className="flex-1 text-sm font-medium">Ubuntu Bank Care</span>
+                <span className="text-xs text-muted">{when(m.created_at)}</span>
+              </div>
+              <p className="mt-3 whitespace-pre-line text-sm">{m.body}</p>
             </li>
           ))}
         </ul>
