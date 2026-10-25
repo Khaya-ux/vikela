@@ -1,0 +1,8 @@
+# Netlify picks up Next.js on its own and applies its Next.js adapter. This only pins the
+# build to match local development.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24"
