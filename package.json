@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:reset": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file=.env.local scripts/seed.ts",
+    "models:compare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file=.env.local scripts/compare-models.ts",
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {

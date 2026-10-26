@@ -33,7 +33,8 @@ const RULES: Rule[] = [
 
 // Signals that a phrase between friends is a joke. Rules only lower severity on these;
 // the model makes the real call.
-const JOKE = /\b(lol|lmao|haha+|😂|🤣)\b/i;
+// Emoji sit outside \b word boundaries, so they're matched on their own.
+const JOKE = /\b(lol|lmao|haha+)\b|😂|🤣/i;
 
 export function classifyWithRules(reference: string): Classification {
   const hits = RULES.filter((r) => r.pattern.test(reference));
